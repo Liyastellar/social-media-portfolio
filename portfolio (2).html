@@ -500,29 +500,26 @@ section { padding: 100px 64px; }
 .pg {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-top: 2px;
-  background: var(--border);
+  gap: 4px;
+  margin-top: 4px;
 }
 
 .pg-item {
   display: block;
-  aspect-ratio: 4/5;
   overflow: hidden;
-  position: relative;
   background: var(--off);
 }
 
 .pg-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
   display: block;
   transition: transform 0.5s ease;
   filter: grayscale(10%);
 }
 
 .pg-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.02);
   filter: grayscale(0%);
 }
 
@@ -666,19 +663,118 @@ footer {
 footer span { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
 
 @media (max-width: 900px) {
-  nav { padding: 0 24px; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--border); }
-  .hero-right { padding: 48px 24px 64px; }
-  section { padding: 70px 24px; }
-  .svc-grid { grid-template-columns: 1fr; }
-  .work-header { grid-template-columns: 1fr; }
-  .case-metrics { grid-template-columns: 1fr 1fr; }
-  .case-deliverables { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  body { cursor: auto; }
+
+  nav {
+    padding: 0 20px;
+    height: 56px;
+  }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 18px; }
+  .nav-cta { padding: 8px 16px; font-size: 11px; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-left {
+    padding: 80px 24px 40px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+  .hero-title {
+    font-size: 64px;
+  }
+  .hero-desc { font-size: 14px; max-width: 100%; }
+  .hero-btns { flex-wrap: wrap; gap: 12px; }
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding-top: 20px;
+  }
+  .hstat-num { font-size: 28px; }
+  .hstat-label { font-size: 10px; }
+
+  .hero-right {
+    padding: 40px 24px 60px;
+    background: var(--off);
+  }
+  .chat-label { font-size: 10px; margin-bottom: 16px; }
+  .cmsg { font-size: 14px; padding: 12px 16px; }
+
+  .marquee-item { font-size: 14px; padding: 0 20px; }
+
+  section { padding: 60px 24px; }
+
+  .s-title { font-size: 40px; }
+
+  .svc-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  .svc-card { padding: 36px 28px; }
+  .svc-num { font-size: 36px; margin-bottom: 16px; }
+  .svc-name { font-size: 22px; }
+
+  .work-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .case-top { padding: 36px 28px; }
+  .case-title { font-size: 48px; }
+  .case-sub { font-size: 16px; }
+  .case-body { padding: 28px; }
+  .case-about { font-size: 14px; margin-bottom: 28px; }
+
+  .case-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 28px;
+  }
+  .case-metric { padding: 16px 12px; }
+  .cm-val { font-size: 32px; }
+  .cm-label { font-size: 9px; }
+
+  .case-deliverables { grid-template-columns: 1fr; gap: 10px; }
+  .case-del { font-size: 13px; }
+
   .pg { grid-template-columns: repeat(2, 1fr); }
-  .hero-stats { grid-template-columns: 1fr 1fr; gap: 24px; }
-  footer { flex-direction: column; gap: 8px; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .about-text { font-size: 14px; }
+  .about-quote { font-size: 20px; }
+  .about-detail { font-size: 13px; }
+  .skill { font-size: 10px; padding: 6px 12px; }
+
+  .contact { padding: 60px 24px; }
+  .contact::before { font-size: 120px; }
+  .contact-sub { font-size: 14px; }
+  .contact-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .btn-outline { width: 200px; text-align: center; }
+
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 52px; }
+  .s-title { font-size: 34px; }
+  .hero-stats { gap: 0; }
+  .hstat-num { font-size: 24px; }
+  .case-metrics { grid-template-columns: 1fr 1fr; }
+  .case-metric:last-child { grid-column: span 2; border-right: none; border-top: 1px solid var(--border); }
+  .pg { grid-template-columns: repeat(2, 1fr); }
+  .nav-cta { display: none; }
 }
 </style>
 </head>
@@ -716,7 +812,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.0
         <div class="hstat-label">Years exp</div>
       </div>
       <div class="hstat">
-        <div class="hstat-num">∞</div>
+        <div class="hstat-num" style="font-size:32px;letter-spacing:0;">Many</div>
         <div class="hstat-label">Posts built</div>
       </div>
       <div class="hstat">
@@ -856,8 +952,8 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.0
   <div class="s-label">Get in touch</div>
   <h2 class="s-title">READY TO <em>start?</em></h2>
   <p class="contact-sub">Currently taking on new clients for social media management and content strategy. Remote only. Startups and small businesses welcome.</p>
+  <p style="font-size:22px;color:white;letter-spacing:0.06em;margin-bottom:24px;font-weight:300;">liyastellar@gmail.com</p>
   <div class="contact-btns">
-    <a href="/cdn-cgi/l/email-protection#f58c9a8087b59098949c99db969a98" class="btn-coral">Email me</a>
     <a href="https://www.linkedin.com/in/liyastellar" target="_blank" class="btn-outline">LinkedIn</a>
     <a href="https://www.instagram.com/liya.eravath" target="_blank" class="btn-outline">Instagram</a>
   </div>
@@ -868,7 +964,7 @@ footer span { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.0
   <span>Bengaluru, India — Available worldwide</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -882,9 +978,4 @@ function animRing() {
   ry += (my - ry) * 0.12;
   ring.style.left = rx + 'px';
   ring.style.top = ry + 'px';
-  requestAnimationFrame(animRing);
-}
-animRing();
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%, -50%) scale(1.8)'; ring.style.opacity = '0.8'; });
-  el.addEventList
+  requestAnimationFrame(
